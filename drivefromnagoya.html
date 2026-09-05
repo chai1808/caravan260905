@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名古屋発 下道2時間で行く 静寂と自然のドライブガイド</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        warm: {
+                            50: '#fdfbf7',
+                            100: '#f7f2e9',
+                            200: '#eee3d0',
+                            800: '#5c4832',
+                            900: '#3d2e1e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+                        serif: ['"Shippori Mincho"', '"Yu Mincho"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcfbf9;
+            color: #2d3748;
+        }
+        .font-serif-title {
+            font-family: 'Shippori Mincho', serif;
+        }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+        }
+        .modal-active {
+            overflow: hidden;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c;
+        }
+    </style>
+</head>
+<body class="antialiased text-stone-800 bg-warm-50 selection:bg-emerald-200 selection:text-emerald-900">
+
+    <!-- Sticky Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-glass border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-forest-800 text-white flex items-center justify-center font-serif text-base sm:text-lg font-bold shadow-md group-hover:scale-105 transition">
+                    静
+                </span>
+                <div>
+                    <span class="block font-serif-title font-bold text-stone-800 text-sm sm:text-base leading-none">静寂のドライブガイド</span>
+                    <span class="block text-[10px] sm:text-xs text-stone-500 font-sans mt-0.5">名古屋発・下道2時間の休日旅</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs sm:text-sm font-medium text-stone-600">
+                <a href="#concept" class="hover:text-forest-800 transition">旅のテーマ</a>
+                <a href="#spots" class="hover:text-forest-800 transition">厳選8ルート</a>
+                <a href="#elements" class="hover:text-forest-800 transition">道の駅・足湯の魅力</a>
+                <a href="#faq" class="hover:text-forest-800 transition">ドライブのコツ</a>
+            </nav>
+
+            <button onclick="toggleFavoritesModal()" class="relative bg-emerald-50 hover:bg-emerald-100 text-forest-800 border border-emerald-200/80 px-3.5 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition shadow-sm">
+                <i class="fa-solid fa-bookmark text-emerald-600"></i>
+                <span>気になる保存リスト</span>
+                <span id="fav-badge" class="bg-forest-800 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 sm:pt-32 pb-20 sm:pb-32 overflow-hidden bg-stone-900 text-white">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=80" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/1200x800/14532d/ffffff?text=%E9%9D%99%E2%B2%82%E3%81%AE%E6%A3%AE%E3%81%A8%E8%87%AA%E7%84%B6';"
+                 alt="静寂な深い森と澄んだ空気" 
+                 class="w-full h-full object-cover opacity-40 scale-105 transform animate-pulse duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-black/50"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
+            <div class="inline-flex items-center gap-2 bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full backdrop-blur-md">
+                <i class="fa-solid fa-leaf text-emerald-400"></i>
+                <span>人混みが苦手な人のための、休日エスケープ</span>
+            </div>
+
+            <h1 class="font-serif-title text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-wide text-stone-100">
+                脱・人混み。<br class="sm:hidden">
+                名古屋から下道2時間、<br>
+                <span class="text-emerald-300">エンジンを切れば、風と水の音だけ。</span>
+            </h1>
+
+            <p class="text-stone-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                高速道路の渋滞にもまれず、のんびり移り変わる景色を楽しみながらドライブ。<br class="hidden sm:block">
+                人混みを避けて心を整える厳選8エリアと、ふらっと立ち寄れる道の駅・足湯の旅。
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#spots" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base px-8 py-4 rounded-full shadow-lg hover:shadow-emerald-900/50 transition duration-300 flex items-center justify-center gap-2">
+                    <span>静かなスポット8選を見る</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Key Features Chips -->
+            <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm border-t border-stone-800/80 max-w-3xl mx-auto text-stone-400">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-route text-emerald-400"></i> 全て下道2時間以内
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-tree text-emerald-400"></i> 自然豊かな穴場名所
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-store text-emerald-400"></i> 寄り道できる道の駅
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-hot-tub-person text-emerald-400"></i> 疲れを癒やす足湯情報
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="py-16 sm:py-24 bg-warm-100 border-b border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-3 mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-forest-800">WHY SUBROAD DRIVE</span>
+                <h2 class="font-serif-title text-2xl sm:text-4xl font-bold text-stone-800">「高速を使わないドライブ」という贅沢</h2>
+                <div class="w-12 h-0.5 bg-forest-800 mx-auto mt-2"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
+                        01
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-stone-800">渋滞ストレスから解放</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        週末のIC周辺や高速料金所の混雑とは無縁。信号が少なく緑豊かな下道ルートを選べば、自分のペースでゆったりマイペースに走れます。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
+                        02
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-stone-800">五感を満たす静寂</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        観光地化されすぎていないからこそ、車を降りた瞬間に広がる静けさ。川のせせらぎや木漏れ日を独り占めできる贅沢な時間が待っています。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
+                        03
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-stone-800">ふらりと寄り道の醍醐味</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        道中で見つけた採れたて野菜の道の駅や、無料で浸かれる足湯。目的地までの旅路そのものがリフレッシュのひとときになります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spots Showcase Section -->
+    <section id="spots" class="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center space-y-3 mb-16">
+            <span class="text-xs font-bold uppercase tracking-wider text-forest-800">FEATURED DESTINATIONS</span>
+            <h2 class="font-serif-title text-2xl sm:text-4xl font-bold text-stone-900">
+                名古屋発・下道2時間で行く<br class="sm:hidden">
+                静寂のドライブスポット8選
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-500 max-w-lg mx-auto">
+                各スポットには、あわせて立ち寄りたい近隣の「道の駅」と「足湯・日帰り温泉」の情報を網羅しています。
+            </p>
+        </div>
+
+        <div id="spots-container" class="space-y-16 sm:space-y-24">
+            <!-- Dynamically Rendered via JS for complete structure and clean markup -->
+        </div>
+    </section>
+
+    <!-- Roadside Station & Footbath Appeal Section -->
+    <section id="elements" class="py-16 sm:py-20 bg-emerald-900 text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6">
+                    <span class="inline-block bg-emerald-800 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full">ドライブの愉しみ</span>
+                    <h2 class="font-serif-title text-2xl sm:text-4xl font-bold leading-tight">
+                        地元の味覚と、ほっと解れる温もり。<br>
+                        「道の駅」と「足湯」をセットで。
+                    </h2>
+                    <p class="text-stone-300 text-xs sm:text-sm leading-relaxed font-light">
+                        静かな自然に癒やされたあとは、地域の恵みが詰まった「道の駅」で手作り和菓子やご当地グルメを楽しんだり、ポカポカの「足湯」でドライブの足の疲れを癒やすのが通の過ごし方。
+                    </p>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-store text-emerald-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-stone-100">採れたて野菜＆絶品ご当地テイクアウト</h4>
+                                <p class="text-xs text-stone-400">五平餅、西尾抹茶スイーツ、焼きたてパンなど素朴で温かい味覚。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-hot-tub-person text-emerald-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-stone-100">タオル1枚でサッと立ち寄れる足湯</h4>
+                                <p class="text-xs text-stone-400">全身着替える手間なく、天然温泉の効能を手軽に満喫。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/166534/ffffff?text=%E8%B6%B3%E6%B9%AF%E3%81%A7%E7%99%92%E3%82%84%E3%81%99';" 
+                         alt="足湯で癒やされるひととき" class="rounded-2xl h-48 sm:h-60 w-full object-cover shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/166534/ffffff?text=%E9%81%93%E3%81%AE%E9%A1%95%E3%82%B0%E3%83%AB%E3%83%A1';" 
+                         alt="道の駅のおいしいグルメ" class="rounded-2xl h-48 sm:h-60 w-full object-cover shadow-lg mt-6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drive Tips & FAQ Section -->
+    <section id="faq" class="py-16 sm:py-24 bg-warm-50 border-b border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-forest-800">DRIVE TIPS</span>
+                <h2 class="font-serif-title text-2xl sm:text-3xl font-bold text-stone-800">静かにゆっくり楽しむための下道ドライブのコツ</h2>
+                <div class="w-12 h-0.5 bg-forest-800 mx-auto mt-2"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm space-y-2">
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-forest-800"></i>
+                        おすすめの出発時間帯は？
+                    </h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-6">
+                        午前7:30〜8:00頃に名古屋市内を出発すると、市内抜けの通勤ラッシュを避けつつ、目的地の駐車場が空いている時間帯（午前9時前後）に到着できます。静寂を一番感じられる朝の空気が特におすすめです。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm space-y-2">
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-forest-800"></i>
+                        下道運転で疲れない工夫は？
+                    </h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-6">
+                        1時間に1回、紹介している「道の駅」に車を停めて深呼吸しましょう。無理に一度に走り切ろうとせず、道の駅やカフェでの休憩そのものを旅の要素に組み込むことが疲れないコツです。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm space-y-2">
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-suitcase text-forest-800"></i>
+                        持っていくと便利な持ち物は？
+                    </h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-6">
+                        「ハンドタオル1〜2枚（足湯用）」「小銭（無料駐車場や無人販売所用）」「温かい飲み物を入れたマイボトル」があると重宝します。足湯からあがった後の靴下の着脱がしやすい服装もおすすめです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-forest-800 text-white flex items-center justify-center font-serif font-bold text-sm">静</span>
+                <span class="font-serif-title font-bold text-stone-200 text-base">静寂のドライブガイド</span>
+            </div>
+            <p class="text-xs font-light max-w-md mx-auto text-stone-500">
+                名古屋から高速を使わず下道でふらっと行ける、静かな自然と道の駅・足湯を巡る大人向けドライブポータル。
+            </p>
+            <div class="border-t border-stone-800 pt-6 text-[11px] text-stone-600">
+                &copy; 静寂のドライブガイド All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Spot Details Modal -->
+    <div id="spot-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-stone-200 max-h-[90vh] flex flex-col my-auto" onclick="event.stopPropagation()">
+            <!-- Modal Header with Image Slider preview -->
+            <div class="relative h-56 sm:h-72 bg-stone-900">
+                <img id="modal-hero-img" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition backdrop-blur-md">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span id="modal-category" class="bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full"></span>
+                        <span id="modal-time" class="text-xs text-emerald-300 font-medium"></span>
+                    </div>
+                    <h3 id="modal-title" class="font-serif-title font-bold text-xl sm:text-3xl text-stone-100"></h3>
+                    <p id="modal-location" class="text-xs text-stone-300 flex items-center gap-1 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-5 sm:p-8 overflow-y-auto space-y-6 text-stone-700 text-xs sm:text-sm leading-relaxed">
+                <!-- Gallery Thumbnails -->
+                <div>
+                    <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider mb-2">フォトギャラリー</h4>
+                    <div id="modal-thumbs" class="flex gap-2 overflow-x-auto pb-2"></div>
+                </div>
+
+                <!-- Tagline & Description -->
+                <div class="bg-warm-100/80 p-4 rounded-2xl border border-stone-200/70">
+                    <p id="modal-tagline" class="font-bold text-stone-800 text-sm sm:text-base mb-2 font-serif-title"></p>
+                    <p id="modal-desc" class="text-stone-600"></p>
+                </div>
+
+                <!-- Road & Crowd Info -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <h5 class="font-bold text-forest-800 text-xs flex items-center gap-1.5 mb-1">
+                            <i class="fa-solid fa-car-side"></i> 名古屋からの下道ルート解説
+                        </h5>
+                        <p id="modal-route-desc" class="text-stone-600 text-xs leading-relaxed"></p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <h5 class="font-bold text-forest-800 text-xs flex items-center gap-1.5 mb-1">
+                            <i class="fa-solid fa-user-slash"></i> 人混みを避けるコツ
+                        </h5>
+                        <p id="modal-crowd-tip" class="text-stone-600 text-xs leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Integrated Roadside Station & Footbath Details -->
+                <div class="border-t border-stone-200 pt-5 space-y-4">
+                    <h4 class="font-bold text-stone-900 text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-forest-800"></i> セットで寄れる寄り道スポット
+                    </h4>
+
+                    <div id="modal-side-trips" class="grid sm:grid-cols-2 gap-4"></div>
+                </div>
+
+                <!-- External Map Link -->
+                <div class="pt-2 flex justify-end">
+                    <a id="modal-map-link" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-2 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-md">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        <span>Google Mapでナビを開始する</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Favorites Drawer/Modal -->
+    <div id="fav-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeFavoritesModal()">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-stone-200 space-y-4" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+                <h3 class="font-serif-title font-bold text-lg text-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-bookmark text-amber-500"></i> 保存したドライブ先
+                </h3>
+                <button onclick="closeFavoritesModal()" class="text-stone-400 hover:text-stone-600 p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="fav-list-container" class="space-y-3 max-h-80 overflow-y-auto pr-1"></div>
+
+            <div class="pt-2 text-center">
+                <button onclick="closeFavoritesModal()" class="w-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs py-2.5 rounded-xl transition">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fallback helper for broken image URLs
+        function imgFallback(text) {
+            return `this.onerror=null; this.src='https://placehold.co/800x600/14532d/ffffff?text=${encodeURIComponent(text)}';`;
+        }
+
+        // Data Structure for Nagoya 2-Hour Subroad Drive Spots
+        const spotsData = [
+            {
+                id: "jokoji",
+                name: "定光寺・定光寺公園",
+                category: "渓谷・寺院",
+                location: "愛知県瀬戸市",
+                timeMinutes: 55,
+                quietLevel: 4,
+                heroImage: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "名古屋から一時間弱。池のほとりと静寂の森で心をリセット",
+                description: "名古屋市東部から国道19号または愛知県道15号を進むだけで到着する静寂の山寺。境内の奥に続く静かな森と池の周りは人が少なく、風の音を聞きながら歩くのに最適です。",
+                routeDesc: "国道19号または県道15号経由。春日井・瀬戸方面への下道は比較的道幅も広く走りやすいコースです。",
+                crowdTip: "境内の奥や山道散策路は週末でも静か。午前9時〜11時前の散策が最も澄んだ空気を感じられます。",
+                mapQuery: "定光寺 愛知県瀬戸市",
+                station: {
+                    name: "道の駅 瀬戸しなの",
+                    driveTime: "車で約10分",
+                    desc: "瀬戸焼の器や地元瀬戸豚を使った焼きそば・豚汁が味わえる人気立ち寄りスポット。",
+                    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "湯の華アイランド 足湯",
+                    driveTime: "車で約20分",
+                    desc: "木曽川の絶景を眼下に見下ろしながらゆったり浸かれる癒やしの天然足湯エリア。",
+                    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "otaki",
+                name: "王滝渓谷（おうたきけいこく）",
+                category: "渓谷・巨岩",
+                location: "愛知県豊田市",
+                timeMinutes: 75,
+                quietLevel: 5,
+                heroImage: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "東海の昇仙峡。巨岩と清流が生み出すダイナミックな静けさ",
+                description: "巴川の支流に位置し、巨大な岩と清流が織りなす東洋的な静寂空間。遊歩道や吊り橋が整備されており、混雑する香嵐渓とは対照的に人の少ない穴場渓谷です。",
+                routeDesc: "国道153号または国道301号経由。豊田市内を抜けると車交通量が減り、のどかな里山ドライブルートへ入ります。",
+                crowdTip: "敷地が広いため人とすれ違うことが稀。宮川原広場近くの駐車場に停めると滝や吊り橋への散策がスムーズです。",
+                mapQuery: "王滝渓谷 愛知県豊田市",
+                station: {
+                    name: "道の駅 つくで手作り村",
+                    driveTime: "車で約25分",
+                    desc: "名物「美河フランク」の肉汁溢れるフランクフルトと、手作りの五平餅が評判の道の駅。",
+                    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "勘八温泉 足湯（日帰り温泉併設）",
+                    driveTime: "車で約15分",
+                    desc: "矢作川沿いに佇む静かな温泉郷。ドライブで疲れた足をじんわり温めるのに最適。",
+                    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "yumori",
+                name: "夕森公園・竜神の滝",
+                category: "滝・清流",
+                location: "岐阜県中津川市",
+                timeMinutes: 115,
+                quietLevel: 5,
+                heroImage: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "エメラルドグリーンに輝く竜神伝説の滝と、深い木々の呼吸",
+                description: "国道19号を恵那・中津川方面へ一直線。圧倒的な透明度を誇る清流と、迫力ある竜神の滝が待っています。木製の木道から眺めるエメラルドグリーンの滝つぼは息をのむ美しさです。",
+                routeDesc: "国道19号をひたすら北上。木曽川沿いの信号の少ない快走路で、ドライビング自体が爽快です。",
+                crowdTip: "滝のすぐ近くまで木道でアクセス可能。夕方前よりは、光が美しく差し込む午前中が最も神秘的です。",
+                mapQuery: "夕森公園 竜神の滝",
+                station: {
+                    name: "道の駅 きりら坂下",
+                    driveTime: "車で約15分",
+                    desc: "木曽川の清流を望む道の駅。そば打ち体験や地元産のよもぎ餅、新鮮な野菜が豊富です。",
+                    image: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "付知峡温泉 おんぽいの湯（足湯コーナー）",
+                    driveTime: "車で約20分",
+                    desc: "とろみのあるぬるぬるした泉質が自慢の天然温泉。屋外足湯で木々の緑を楽しみながらひと休み。",
+                    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "tado",
+                name: "多度峡・天然プール周辺",
+                category: "清流・渓谷",
+                location: "三重県桑名市",
+                timeMinutes: 65,
+                quietLevel: 4,
+                heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "養老山脈の南端。澄み切った水音に包まれる静かな渓谷美",
+                description: "愛知と三重の県境を流れる揖斐川を越えてすぐ。多度大社の奥に位置する多度峡は、夏場のアウトドアシーズンを除けば非日常的な静けさに包まれる癒やしのスポットです。",
+                routeDesc: "国道23号または国道1号を経由して西へ。平坦で走りやすく、初心者でも安心な下道ルート。",
+                crowdTip: "オフシーズンや平日は人影もまばら。多度大社の鳥居をくぐり、さらに奥の山道をゆっくり散歩するのがおすすめ。",
+                mapQuery: "多度峡 三重県桑名市",
+                station: {
+                    name: "道の駅 立田ふれあいの里",
+                    driveTime: "車で約15分",
+                    desc: "全国有数のレンコン産地。名物の「レンコンライスバーガー」や「れんこんソフト」が人気。",
+                    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "多度温泉（天然足湯）",
+                    driveTime: "車で約10分",
+                    desc: "多度山麓から湧き出る天然温泉。心地よい温もりで足のむくみや日頃の疲れをほぐせます。",
+                    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "sangane",
+                name: "三ヶ根山（さんがねさん）周辺",
+                category: "海見え・山道",
+                location: "愛知県西尾市・幸田町",
+                timeMinutes: 85,
+                quietLevel: 4,
+                heroImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "三河湾を一望。海風と山の静けさが交差するシーサイドドライブ",
+                description: "三河湾国定公園に位置し、山頂からは碧く穏やかな三河湾と島々を見下ろせます。スカイラインの途中にある展望スペースは混雑が少なく、車内で海を眺めながら缶コーヒーを飲むだけでも贅沢です。",
+                routeDesc: "国道23号（名四バイパス）を南下。立体交差が多く、下道でありながら高速並みにスムーズにアクセス可能。",
+                crowdTip: "夕暮れ時の1時間前がベスト。静かな海に沈む夕日と穏やかな風を車内や展望スペースから独り占めできます。",
+                mapQuery: "三ヶ根山 愛知県西尾市",
+                station: {
+                    name: "道の駅 にしお岡ノ山",
+                    driveTime: "車で約20分",
+                    desc: "西尾特産の「抹茶スイーツ」が充実！濃厚な抹茶ソフトや地元野菜の直売が魅力。",
+                    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "形原温泉 潮香る足湯",
+                    driveTime: "車で約15分",
+                    desc: "三河湾の潮風を感じながら浸かれる風情ある足湯。散策後のリフレッシュにぴったり。",
+                    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "noiri",
+                name: "野入川・黒田ダム周辺",
+                category: "奥三河・湖畔",
+                location: "愛知県豊田市稲武",
+                timeMinutes: 110,
+                quietLevel: 5,
+                heroImage: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "知る人ぞ知る奥三河の隠れ里。静かな湖畔と澄んだ山気",
+                description: "愛知の最北東部、長野県境にも近い稲武エリア。黒田ダムや野入川沿いは観光化が進んでおらず、静かな森と水辺の絶景がそのまま残されています。車の音すらない静寂を味わいたい方に最適です。",
+                routeDesc: "国道153号（飯田街道）をひたすら東へ。足助を過ぎると車交通量が一段と減り、山間の美しい緑が広がります。",
+                crowdTip: "休日でもほとんど混雑しない究極の穴場。ダム湖畔のパーキングスペースで静かに読書するのも贅沢です。",
+                mapQuery: "黒田ダム 豊田市稲武",
+                station: {
+                    name: "道の駅 どんぐりの里いなぶ",
+                    driveTime: "車で約10分",
+                    desc: "焼きたての米粉パン「どんぐりベーカリー」や温泉施設が併設された奥三河のオアシス。",
+                    image: "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "どんぐり天然足湯",
+                    driveTime: "車で約10分",
+                    desc: "道の駅に隣接した天然温泉の足湯。開放的な木造建築の中でぬくぬく休憩できます。",
+                    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "dodo",
+                name: "百々ヶ峰（どどがみね）・松尾池",
+                category: "池・低山",
+                location: "岐阜県岐阜市",
+                timeMinutes: 80,
+                quietLevel: 4,
+                heroImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "金華山の北に潜む、水鳥が遊ぶ静かな山あいの池",
+                description: "岐阜市の最高峰・百々ヶ峰の南麓にある松尾池。かつてオシドリの飛来地として親しまれ、木造の合掌造り風の休憩所と水面に映る緑が絵画のような美しさを見せます。",
+                routeDesc: "国道22号（名岐バイパス）で岐阜市街地へ。長良川を越えて北側の山手へ進みます。",
+                crowdTip: "観光バスが入らない狭めのアクセス道路のため、一般観光客が少なく地元のハイカーが静かに歩く穴場です。",
+                mapQuery: "松尾池 岐阜市",
+                station: {
+                    name: "道の駅 むげ川",
+                    driveTime: "車で約20分",
+                    desc: "清流武儀川のそばに位置。名物のつるつるの「むげ川パン」や新鮮野菜が目白押し。",
+                    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "長良川温泉 足湯（うかいミュージアム前）",
+                    driveTime: "車で約15分",
+                    desc: "長良川と金華山・岐阜城を同時に見上げる絶景ロケーションの無料足湯スポット。",
+                    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+                }
+            },
+            {
+                id: "yoro",
+                name: "養老公園・奥の散策路",
+                category: "滝・滝下ぽっかり",
+                location: "岐阜県養老町",
+                timeMinutes: 70,
+                quietLevel: 4,
+                heroImage: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                ],
+                tagline: "親孝行伝説の滝。表通りを外れれば広がる風情ある森",
+                description: "日本の滝百選「養老の滝」で知られるスポット。観光エリアのメインストリートから少し外れた静寂の林道を進むと、水の跳ねる音と山風の快い響きだけが漂う静けさを味わえます。",
+                routeDesc: "東名阪道沿いの一般道や県道56号を経由。木曽三川公園の広大な景色を横目に気持ちよく流せます。",
+                crowdTip: "メインの滝前は昼前後に人が集まるため、朝8時半〜10時の静かな時間帯の訪問が狙い目です。",
+                mapQuery: "養老の滝 岐阜県養老町",
+                station: {
+                    name: "道の駅 月見の里 南濃",
+                    driveTime: "車で約10分",
+                    desc: "岐阜県内でも有数の巨大な道の駅。特産「南濃みかん」を使ったソフトクリームやラーメンが有名。",
+                    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+                },
+                footbath: {
+                    name: "養老温泉 ゆせんの里（足湯コーナー）",
+                    driveTime: "車で約15分",
+                    desc: "まろやかな温熱効果が魅力の天然温泉。広々としたリゾート感覚の敷地で深呼吸。",
+                    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80"
+                }
+            }
+        ];
+
+        // State Management
+        let favorites = JSON.parse(localStorage.getItem('quiet_drive_favs_lp') || '[]');
+
+        function updateFavBadge() {
+            const badge = document.getElementById('fav-badge');
+            if (badge) badge.textContent = favorites.length;
+        }
+
+        function toggleFavorite(spotId) {
+            const idx = favorites.indexOf(spotId);
+            if (idx > -1) {
+                favorites.splice(idx, 1);
+            } else {
+                favorites.push(spotId);
+            }
+            localStorage.setItem('quiet_drive_favs_lp', JSON.stringify(favorites));
+            updateFavBadge();
+            renderSpotsLP();
+            renderFavoritesList();
+        }
+
+        function toggleFavoritesModal() {
+            const modal = document.getElementById('fav-modal');
+            if (modal.classList.contains('hidden')) {
+                renderFavoritesList();
+                modal.classList.remove('hidden');
+            } else {
+                closeFavoritesModal();
+            }
+        }
+
+        function closeFavoritesModal() {
+            document.getElementById('fav-modal').classList.add('hidden');
+        }
+
+        function renderFavoritesList() {
+            const container = document.getElementById('fav-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-stone-400 text-xs">
+                        <i class="fa-regular fa-bookmark text-2xl mb-2 block text-stone-300"></i>
+                        保存されたスポットはまだありません
+                    </div>
+                `;
+                return;
+            }
+
+            favorites.forEach(spotId => {
+                const spot = spotsData.find(s => s.id === spotId);
+                if (!spot) return;
+
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-3 bg-stone-50 rounded-xl border border-stone-200 gap-3 hover:bg-stone-100/80 transition';
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden cursor-pointer" onclick="closeFavoritesModal(); openModal('${spot.id}');">
+                        <img src="${spot.heroImage}" ${imgFallback(spot.name)} class="w-12 h-12 rounded-lg object-cover shrink-0">
+                        <div class="truncate">
+                            <h4 class="font-bold text-stone-800 text-xs sm:text-sm truncate">${spot.name}</h4>
+                            <p class="text-[11px] text-stone-500"><i class="fa-solid fa-car text-emerald-600"></i> 約${spot.timeMinutes}分 (${spot.location})</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleFavorite('${spot.id}')" class="text-stone-400 hover:text-red-500 p-2 transition text-xs">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Render main spots in clean Landing Page editorial format
+        function renderSpotsLP() {
+            const container = document.getElementById('spots-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            spotsData.forEach((spot, idx) => {
+                const isFav = favorites.includes(spot.id);
+                
+                // Stars for quiet level
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    starsHtml += i <= spot.quietLevel 
+                        ? '<i class="fa-solid fa-leaf text-emerald-600"></i>' 
+                        : '<i class="fa-solid fa-leaf text-stone-200"></i>';
+                }
+
+                const article = document.createElement('article');
+                article.className = 'bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-md hover:shadow-xl transition duration-500 flex flex-col lg:flex-row';
+
+                article.innerHTML = `
+                    <!-- Spot Image Side -->
+                    <div class="lg:w-1/2 relative h-64 sm:h-80 lg:h-auto min-h-[280px] bg-stone-900 overflow-hidden group cursor-pointer" onclick="openModal('${spot.id}')">
+                        <img src="${spot.heroImage}" ${imgFallback(spot.name)} alt="${spot.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                        <div class="absolute top-4 left-4 flex items-center gap-2">
+                            <span class="bg-white/90 backdrop-blur-md text-forest-900 font-bold text-xs px-3 py-1 rounded-full shadow-sm">
+                                Route 0${idx + 1}
+                            </span>
+                            <span class="bg-forest-800 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
+                                ${spot.category}
+                            </span>
+                        </div>
+
+                        <button onclick="event.stopPropagation(); toggleFavorite('${spot.id}')" 
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-stone-600 hover:text-amber-500 transition shadow-sm">
+                            <i class="fa-solid fa-bookmark ${isFav ? 'text-amber-500' : ''} text-base"></i>
+                        </button>
+
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <p class="text-xs font-semibold text-emerald-300 flex items-center gap-1.5 mb-1">
+                                <i class="fa-solid fa-car"></i> 名古屋から約${spot.timeMinutes}分 (下道ルート)
+                            </p>
+                            <h3 class="font-serif-title font-bold text-2xl sm:text-3xl leading-tight">${spot.name}</h3>
+                            <p class="text-xs text-stone-300 flex items-center gap-1 mt-1">
+                                <i class="fa-solid fa-location-dot text-emerald-400"></i> ${spot.location}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Spot Content Side -->
+                    <div class="lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <!-- Quietness Indicator -->
+                            <div class="flex items-center justify-between text-xs border-b border-stone-100 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-stone-400 font-medium">穴場・静寂度:</span>
+                                    <span class="flex gap-1 text-xs">${starsHtml}</span>
+                                </div>
+                                <span class="bg-emerald-50 text-emerald-800 font-semibold px-2.5 py-0.5 rounded text-[11px]">
+                                    人混み回避★最高
+                                </span>
+                            </div>
+
+                            <p class="font-serif-title font-bold text-base sm:text-lg text-stone-900 leading-snug">
+                                "${spot.tagline}"
+                            </p>
+
+                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed font-light">
+                                ${spot.description}
+                            </p>
+
+                            <!-- Side Trip Preview Grid (Roadside Station & Footbath) -->
+                            <div class="pt-2">
+                                <h4 class="text-[11px] font-bold text-stone-400 uppercase tracking-wider mb-2.5 flex items-center gap-1">
+                                    <i class="fa-solid fa-map-pin text-emerald-600"></i> あわせて立ち寄りたい近隣スポット
+                                </h4>
+
+                                <div class="grid grid-cols-2 gap-3 text-xs">
+                                    <!-- Roadside Station Card -->
+                                    <div class="bg-warm-100/70 p-3 rounded-xl border border-stone-200/80 space-y-1">
+                                        <div class="flex items-center justify-between text-[11px] font-bold text-forest-800">
+                                            <span><i class="fa-solid fa-store text-emerald-600"></i> 道の駅</span>
+                                            <span class="text-[10px] text-stone-400 font-normal">${spot.station.driveTime}</span>
+                                        </div>
+                                        <p class="font-bold text-stone-800 text-xs truncate">${spot.station.name}</p>
+                                        <p class="text-[11px] text-stone-500 line-clamp-2 leading-snug">${spot.station.desc}</p>
+                                    </div>
+
+                                    <!-- Footbath Card -->
+                                    <div class="bg-warm-100/70 p-3 rounded-xl border border-stone-200/80 space-y-1">
+                                        <div class="flex items-center justify-between text-[11px] font-bold text-amber-800">
+                                            <span><i class="fa-solid fa-hot-tub-person text-amber-600"></i> 足湯・温泉</span>
+                                            <span class="text-[10px] text-stone-400 font-normal">${spot.footbath.driveTime}</span>
+                                        </div>
+                                        <p class="font-bold text-stone-800 text-xs truncate">${spot.footbath.name}</p>
+                                        <p class="text-[11px] text-stone-500 line-clamp-2 leading-snug">${spot.footbath.desc}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                            <button onclick="openModal('${spot.id}')" 
+                                    class="w-full sm:w-auto flex-1 bg-forest-800 hover:bg-forest-900 text-white font-bold text-xs py-3 px-5 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                                <span>写真・詳しいルートを見る</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}" 
+                               target="_blank" rel="noopener noreferrer" 
+                               class="w-full sm:w-auto bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs py-3 px-4 rounded-xl transition flex items-center justify-center gap-1.5 border border-stone-200">
+                                <i class="fa-solid fa-location-arrow text-emerald-700"></i>
+                                <span>GoogleMap</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(article);
+            });
+        }
+
+        // Modal Functions
+        function openModal(spotId) {
+            const spot = spotsData.find(s => s.id === spotId);
+            if (!spot) return;
+
+            document.getElementById('modal-hero-img').src = spot.heroImage;
+            document.getElementById('modal-category').textContent = spot.category;
+            document.getElementById('modal-time').textContent = `名古屋から下道で約${spot.timeMinutes}分`;
+            document.getElementById('modal-title').textContent = spot.name;
+            document.getElementById('modal-location').innerHTML = `<i class="fa-solid fa-location-dot text-emerald-400"></i> ${spot.location}`;
+            document.getElementById('modal-tagline').textContent = `"${spot.tagline}"`;
+            document.getElementById('modal-desc').textContent = spot.description;
+            document.getElementById('modal-route-desc').textContent = spot.routeDesc;
+            document.getElementById('modal-crowd-tip').textContent = spot.crowdTip;
+
+            // Gallery Thumbnails
+            const thumbsContainer = document.getElementById('modal-thumbs');
+            thumbsContainer.innerHTML = '';
+            spot.gallery.forEach(imgUrl => {
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.className = 'w-20 h-14 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-emerald-500 transition shrink-0';
+                img.onclick = () => {
+                    document.getElementById('modal-hero-img').src = imgUrl;
+                };
+                thumbsContainer.appendChild(img);
+            });
+
+            // Side Trips Details inside Modal
+            const sideTripsContainer = document.getElementById('modal-side-trips');
+            sideTripsContainer.innerHTML = `
+                <div class="bg-stone-50 p-3.5 rounded-xl border border-stone-200 flex gap-3">
+                    <img src="${spot.station.image}" ${imgFallback(spot.station.name)} class="w-16 h-16 rounded-lg object-cover shrink-0">
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-forest-800 font-bold mb-0.5">
+                            <span><i class="fa-solid fa-store"></i> 道の駅</span>
+                            <span class="text-[10px] text-stone-400 font-normal">${spot.station.driveTime}</span>
+                        </div>
+                        <h5 class="font-bold text-stone-800 text-xs">${spot.station.name}</h5>
+                        <p class="text-[11px] text-stone-500 mt-1 leading-snug">${spot.station.desc}</p>
+                    </div>
+                </div>
+
+                <div class="bg-stone-50 p-3.5 rounded-xl border border-stone-200 flex gap-3">
+                    <img src="${spot.footbath.image}" ${imgFallback(spot.footbath.name)} class="w-16 h-16 rounded-lg object-cover shrink-0">
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-amber-800 font-bold mb-0.5">
+                            <span><i class="fa-solid fa-hot-tub-person"></i> 足湯・日帰り温泉</span>
+                            <span class="text-[10px] text-stone-400 font-normal">${spot.footbath.driveTime}</span>
+                        </div>
+                        <h5 class="font-bold text-stone-800 text-xs">${spot.footbath.name}</h5>
+                        <p class="text-[11px] text-stone-500 mt-1 leading-snug">${spot.footbath.desc}</p>
+                    </div>
+                </div>
+            `;
+
+            // External Map Link
+            const mapLink = document.getElementById('modal-map-link');
+            mapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
+
+            const modal = document.getElementById('spot-modal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            document.getElementById('spot-modal').classList.add('hidden');
+            document.body.classList.remove('modal-active');
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSpotsLP();
+            updateFavBadge();
+
+            // Background clicks to close modal
+            document.getElementById('spot-modal').addEventListener('click', closeModal);
+            document.getElementById('fav-modal').addEventListener('click', closeFavoritesModal);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>でら映える！名古屋ガールズ＆ユースガイド | NAGOYA TRIP</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            accent: '#2dd4bf'
+                        },
+                        coral: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['M PLUS Rounded 1c', 'Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(-6px)' },
+                            '50%': { transform: 'translateY(6px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.03)' },
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s infinite ease-in-out',
+                        'float-delayed': 'float 4s infinite ease-in-out 2s',
+                        'pulse-glow': 'pulseGlow 2s infinite ease-in-out'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #f6fbf8;
+            color: #1e293b;
+        }
+        .mint-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #0d9488 50%, #059669 100%);
+        }
+        .mint-soft-gradient {
+            background: linear-gradient(135deg, #e6fcf5 0%, #f0fdf4 50%, #e0f2fe 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+        }
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e6fcf5;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-mint-200 selection:text-mint-900">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-mint-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-2xl mint-gradient flex items-center justify-center text-white shadow-md shadow-mint-500/20 group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid fa-sparkles text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-[10px] font-extrabold text-mint-600 tracking-wider block leading-none">サクッと感動＆映え旅♡</span>
+                    <span class="text-lg font-black text-slate-800 tracking-tight group-hover:text-mint-600 transition-colors">名古屋ガールズナビ</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-7 font-extrabold text-slate-600 text-sm">
+                <a href="#spots" class="hover:text-mint-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-camera text-mint-500"></i> 映えスポット
+                </a>
+                <a href="#food-gacha" class="hover:text-mint-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-utensils text-mint-500"></i> 名古屋カワイイ飯
+                </a>
+                <a href="#quiz" class="hover:text-mint-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart text-mint-500"></i> 映え旅診断
+                </a>
+                <a href="#dialect" class="hover:text-mint-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-comment-dots text-mint-500"></i> 名古屋弁ちっぷす
+                </a>
+                <a href="#access" class="hover:text-mint-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-train text-mint-500"></i> 行き方ガイド
+                </a>
+            </nav>
+
+            <!-- Quick Action Button -->
+            <div class="flex items-center gap-3">
+                <button onclick="scrollToSection('quiz')" class="bg-gradient-to-r from-mint-500 to-teal-500 hover:from-mint-600 hover:to-teal-600 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold shadow-md shadow-mint-500/20 hover:shadow-lg transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>旅タイプ診断</span>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-mint-50 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-mint-100 px-4 py-3 space-y-2 font-bold text-slate-700">
+            <a href="#spots" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl hover:bg-mint-50 text-sm">📸 映えスポット＆トレンド</a>
+            <a href="#food-gacha" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl hover:bg-mint-50 text-sm">🍰 名古屋カワイイめしガチャ</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl hover:bg-mint-50 text-sm">✨ あなたの映え旅診断</a>
+            <a href="#dialect" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl hover:bg-mint-50 text-sm">💬 つかえる！名古屋弁</a>
+            <a href="#access" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl hover:bg-mint-50 text-sm">🚅 地方からのアクセス</a>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden mint-soft-gradient py-12 md:py-20 border-b border-mint-100">
+        <!-- Floating decorative elements -->
+        <div class="absolute top-10 left-8 text-mint-300 text-3xl opacity-60 animate-float">✨</div>
+        <div class="absolute top-24 right-12 text-mint-400 text-4xl opacity-60 animate-float-delayed">🍡</div>
+        <div class="absolute bottom-12 left-1/3 text-teal-300 text-3xl opacity-50 animate-float">📸</div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur text-mint-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold border border-mint-200 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-mint-500 animate-ping"></span>
+                        <i class="fa-solid fa-heart text-coral-500"></i>
+                        <span>東京から約100分！週末サクッと旅にぴったり♡</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-800 leading-tight">
+                        今、一番行きたい！<br>
+                        <span class="relative inline-block text-mint-600">
+                            エモい＆映える名古屋
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-mint-200/70 -z-10 rounded-full"></span>
+                        </span>
+                        へ遊びにいこう♡
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        天井まで広がる巨大本棚、レトロ喫茶のクリームソーダ、映える夜景オアシス21、話題のジブリパークまで。写真に残したくなる「カワイイ・美味しい・楽しい」を全部つめこみました！
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#spots" class="bg-gradient-to-r from-mint-500 to-teal-600 hover:from-mint-600 hover:to-teal-700 text-white font-extrabold px-7 py-3.5 rounded-2xl shadow-lg shadow-mint-500/25 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm sm:text-base">
+                            <i class="fa-solid fa-compass"></i> 映えスポットを見る
+                        </a>
+                        <a href="#food-gacha" class="bg-white hover:bg-mint-50 text-mint-800 font-extrabold px-7 py-3.5 rounded-2xl border-2 border-mint-200 shadow-sm hover:shadow transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm sm:text-base">
+                            <i class="fa-solid fa-dice text-mint-500"></i> 映えめしガチャ
+                        </a>
+                    </div>
+
+                    <!-- Highlights Tags -->
+                    <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-2 text-xs font-bold text-mint-800">
+                        <span class="bg-white/80 px-3 py-1.5 rounded-xl border border-mint-100 shadow-sm">✨ ジブリパーク</span>
+                        <span class="bg-white/80 px-3 py-1.5 rounded-xl border border-mint-100 shadow-sm">🍮 ぴよりん＆レトロ喫茶</span>
+                        <span class="bg-white/80 px-3 py-1.5 rounded-xl border border-mint-100 shadow-sm">📸 映え本棚ノリタケ</span>
+                        <span class="bg-white/80 px-3 py-1.5 rounded-xl border border-mint-100 shadow-sm">🛍️ 大須古着＆食べ歩き</span>
+                    </div>
+                </div>
+
+                <!-- Visual Gallery Collages -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md grid grid-cols-2 gap-3.5">
+                        <div class="space-y-3.5">
+                            <div class="relative rounded-3xl overflow-hidden shadow-lg border-2 border-white img-hover-zoom aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&auto=format&fit=crop&q=80" alt="オアシス21夜景" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                    📍オアシス21
+                                </span>
+                            </div>
+                            <div class="relative rounded-3xl overflow-hidden shadow-lg border-2 border-white img-hover-zoom aspect-[4/3]">
+                                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop&q=80" alt="レトロカフェスイーツ" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                    ☕ レトロ喫茶スイーツ
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3.5 pt-6">
+                            <div class="relative rounded-3xl overflow-hidden shadow-lg border-2 border-white img-hover-zoom aspect-[4/3]">
+                                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&auto=format&fit=crop&q=80" alt="ノリタケの森TSUTAYA" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                    📚 ノリタケ巨大本棚
+                                </span>
+                            </div>
+                            <div class="relative rounded-3xl overflow-hidden shadow-lg border-2 border-white img-hover-zoom aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&auto=format&fit=crop&q=80" alt="大須商店街" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                    🛍️ 大須食べ歩き
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Badge Overlay -->
+                        <div class="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur px-4 py-2.5 rounded-2xl shadow-xl border-2 border-mint-300 flex items-center gap-3 animate-pulse-glow">
+                            <div class="w-9 h-9 rounded-full bg-mint-100 flex items-center justify-center text-mint-600 font-bold text-lg">
+                                🐥
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-extrabold text-mint-600 uppercase">Nagoya Youth Pick</p>
+                                <p class="text-xs font-black text-slate-800">「ぴよりん」も待ってるよ♡</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="spots" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-mint-600 font-extrabold text-xs tracking-widest uppercase bg-mint-50 px-3 py-1 rounded-full border border-mint-100">Trending Spots</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-800">絶対ハズせない！映え＆注目スポット</h2>
+                <p class="text-slate-600 text-sm sm:text-base font-medium max-w-xl mx-auto">
+                    SNSで話題のフォトジェニックスポットから、友達同士で盛り上がるカルチャー街まで！
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-4 custom-scrollbar mb-8">
+                <button onclick="filterSpots('all')" class="spot-tab-btn active bg-mint-500 text-white font-extrabold px-5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap shadow-sm hover:opacity-90 transition-all" data-category="all">
+                    ✨ すべて
+                </button>
+                <button onclick="filterSpots('photo')" class="spot-tab-btn bg-slate-100 text-slate-600 hover:bg-mint-100 font-extrabold px-5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all" data-category="photo">
+                    📸 SNS映え・フォトジェニック
+                </button>
+                <button onclick="filterSpots('culture')" class="spot-tab-btn bg-slate-100 text-slate-600 hover:bg-mint-100 font-extrabold px-5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all" data-category="culture">
+                    🛍️ 大須・サブカル・古着
+                </button>
+                <button onclick="filterSpots('anime')" class="spot-tab-btn bg-slate-100 text-slate-600 hover:bg-mint-100 font-extrabold px-5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all" data-category="anime">
+                    🌿 ジブリ＆世界観
+                </button>
+                <button onclick="filterSpots('history')" class="spot-tab-btn bg-slate-100 text-slate-600 hover:bg-mint-100 font-extrabold px-5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all" data-category="history">
+                    🏯 名古屋城＆レトロ歴史
+                </button>
+            </div>
+
+            <!-- Spot Cards Grid -->
+            <div id="spots-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="food-gacha" class="py-16 bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-900 text-white relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] opacity-15"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+            <div class="space-y-3">
+                <span class="bg-mint-500/20 text-mint-300 font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-mint-500/30">Nagoya Sweets & Food</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white">何食べる？名古屋カワイイめしガチャ</h2>
+                <p class="text-slate-300 text-sm sm:text-base font-medium max-w-md mx-auto">
+                    ぷるぷる「ぴよりん」から、甘辛スパイシー手羽先、レトロ小倉トーストまで！
+                </p>
+            </div>
+
+            <!-- Slot Card Wrapper -->
+            <div class="bg-white/10 backdrop-blur-lg border border-mint-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative max-w-2xl mx-auto">
+                <div id="gacha-result-card" class="bg-white text-slate-800 rounded-2xl p-6 sm:p-8 shadow-inner min-h-[280px] flex flex-col items-center justify-center transition-all duration-300 relative overflow-hidden">
+                    <div id="gacha-placeholder" class="space-y-4">
+                        <div class="text-6xl animate-bounce">🐥🍰</div>
+                        <p class="text-lg font-black text-slate-800">「ガチャを回す」を押して今日のご飯決定！</p>
+                        <p class="text-xs text-slate-500 font-medium">ぴよりん・小倉トースト・台湾唐揚げ・味噌カツ...</p>
+                    </div>
+
+                    <!-- Dynamic Result View -->
+                    <div id="gacha-content" class="hidden space-y-4 w-full">
+                        <div class="relative w-full h-44 rounded-2xl overflow-hidden shadow-md mb-3 img-hover-zoom">
+                            <img id="gacha-img" src="" alt="名古屋グルメ" class="w-full h-full object-cover">
+                            <span id="gacha-badge" class="absolute top-3 right-3 bg-mint-500 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow"></span>
+                        </div>
+                        <h3 id="gacha-title" class="text-2xl font-black text-slate-800"></h3>
+                        <p id="gacha-desc" class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-md mx-auto"></p>
+                        <div id="gacha-recommend" class="inline-block bg-mint-50 text-mint-800 font-extrabold text-xs px-3.5 py-1.5 rounded-xl border border-mint-200"></div>
+                    </div>
+                </div>
+
+                <!-- Spin Button -->
+                <div class="mt-8 flex justify-center">
+                    <button id="spin-btn" onclick="spinFoodGacha()" class="mint-gradient hover:brightness-110 text-white font-black text-lg sm:text-xl px-10 py-4 rounded-2xl shadow-xl shadow-mint-500/30 hover:shadow-2xl active:scale-95 transition-all flex items-center gap-3 border border-mint-300">
+                        <i class="fa-solid fa-dice-five text-2xl animate-spin-slow"></i>
+                        <span>ガチャを回す！</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-16 bg-mint-50/60 border-y border-mint-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-8">
+                <span class="text-mint-600 font-extrabold text-xs tracking-widest uppercase bg-white px-3 py-1 rounded-full border border-mint-200 shadow-sm">Trip Quiz</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-800">あなたにピッタリの「映え旅」診断</h2>
+                <p class="text-slate-600 text-sm sm:text-base font-medium">3つの直感クイズに答えるだけで、最高の名古屋プランが分かる♡</p>
+            </div>
+
+            <!-- Quiz Card -->
+            <div class="bg-white border-2 border-mint-200 rounded-3xl p-6 sm:p-9 shadow-xl relative">
+                <!-- Question Step Indicator -->
+                <div id="quiz-container">
+                    <div id="quiz-step-indicator" class="flex justify-between items-center text-xs font-black text-mint-600 mb-6">
+                        <span>QUESTION <span id="current-q-num">1</span> / 3</span>
+                        <div class="w-32 bg-mint-100 h-2.5 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" class="bg-mint-500 h-full w-1/3 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <h3 id="quiz-question-text" class="text-xl sm:text-2xl font-black text-slate-800 mb-6 min-h-[3rem] leading-snug"></h3>
+
+                    <div id="quiz-options" class="space-y-3">
+                        <!-- Options generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Quiz Result Container -->
+                <div id="quiz-result" class="hidden text-center space-y-6">
+                    <div class="w-20 h-20 bg-mint-100 text-mint-600 rounded-2xl flex items-center justify-center text-4xl mx-auto shadow-md border border-mint-200">
+                        <i id="result-icon" class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-black text-mint-600 uppercase tracking-widest bg-mint-50 px-3 py-1 rounded-full border border-mint-200">診断結果</span>
+                        <h3 id="result-title" class="text-2xl sm:text-3xl font-black text-slate-800 mt-2"></h3>
+                    </div>
+                    <p id="result-desc" class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-md mx-auto font-medium"></p>
+                    
+                    <div id="result-spot-box" class="bg-gradient-to-r from-mint-50 to-teal-50 p-5 rounded-2xl border border-mint-200 text-left space-y-2">
+                        <p class="text-xs font-extrabold text-mint-700">💖 イチ押しおすすめ体験</p>
+                        <p id="result-spot-name" class="font-black text-slate-800 text-lg sm:text-xl"></p>
+                    </div>
+
+                    <button onclick="resetQuiz()" class="bg-slate-800 hover:bg-slate-900 text-white font-extrabold px-7 py-3 rounded-2xl text-sm transition-all shadow-md">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> もう一度診断する
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dialect" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-mint-600 font-extrabold text-xs tracking-widest uppercase bg-mint-50 px-3 py-1 rounded-full border border-mint-100">Nagoya Talk</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-800">現地でつかえる！名古屋弁ちっぷす</h2>
+                <p class="text-slate-600 text-sm sm:text-base font-medium max-w-lg mx-auto">
+                    旅行中に言えたら可愛い！地元の人にも親しまれる独特なフレーズ。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Card 1 -->
+                <div class="bg-mint-50/50 hover:bg-mint-50 border border-mint-200 rounded-3xl p-5 transition-all hover:shadow-md group">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-2xl font-black text-mint-800">でら</span>
+                        <span class="text-[11px] bg-mint-200 text-mint-900 px-2.5 py-0.5 rounded-full font-bold">標準語：めちゃくちゃ</span>
+                    </div>
+                    <p class="text-xs text-slate-600 font-medium leading-relaxed mb-3">「でら可愛い」「でらうまい」など、何にでも使える最強フレーズ！</p>
+                    <div class="bg-white p-2.5 rounded-xl text-xs text-slate-700 font-bold border border-mint-100">
+                        💬 「このカフェ、でら映えるね！」
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-mint-50/50 hover:bg-mint-50 border border-mint-200 rounded-3xl p-5 transition-all hover:shadow-md group">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-2xl font-black text-mint-800">ちんちん</span>
+                        <span class="text-[11px] bg-mint-200 text-mint-900 px-2.5 py-0.5 rounded-full font-bold">標準語：超あつあつ</span>
+                    </div>
+                    <p class="text-xs text-slate-600 font-medium leading-relaxed mb-3">味噌煮込みうどんやお茶が激アツな状態！知っておくと驚かない♪</p>
+                    <div class="bg-white p-2.5 rounded-xl text-xs text-slate-700 font-bold border border-mint-100">
+                        💬 「うどんがちinちんだから気をつけよ！」
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-mint-50/50 hover:bg-mint-50 border border-mint-200 rounded-3xl p-5 transition-all hover:shadow-md group">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-2xl font-black text-mint-800">ケッタ</span>
+                        <span class="text-[11px] bg-mint-200 text-mint-900 px-2.5 py-0.5 rounded-full font-bold">標準語：自転車</span>
+                    </div>
+                    <p class="text-xs text-slate-600 font-medium leading-relaxed mb-3">ペダルを「蹴ったくり」漕ぐことから。レンタル自転車で街巡りも◎</p>
+                    <div class="bg-white p-2.5 rounded-xl text-xs text-slate-700 font-bold border border-mint-100">
+                        💬 「ケッタで名駅まで行ってみる？」
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-mint-50/50 hover:bg-mint-50 border border-mint-200 rounded-3xl p-5 transition-all hover:shadow-md group">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-2xl font-black text-mint-800">～だで</span>
+                        <span class="text-[11px] bg-mint-200 text-mint-900 px-2.5 py-0.5 rounded-full font-bold">標準語：～だから</span>
+                    </div>
+                    <p class="text-xs text-slate-600 font-medium leading-relaxed mb-3">理由を言うときの定番語尾。語尾に付けるだけで一気に名古屋感！</p>
+                    <div class="bg-white p-2.5 rounded-xl text-xs text-slate-700 font-bold border border-mint-100">
+                        💬 「今日は名古屋遊びにいくんだで！」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="access" class="py-16 bg-mint-50/30 border-t border-mint-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-mint-600 font-extrabold text-xs tracking-widest uppercase bg-mint-100 px-3 py-1 rounded-full">Easy Access</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-800">地方からもスグ！アクセスガイド</h2>
+                <p class="text-slate-600 text-sm sm:text-base font-medium max-w-lg mx-auto">
+                    日本の真ん中にあるから、新幹線でも夜行バスでもアクセス抜群！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tokyo Route -->
+                <div class="bg-white p-6 rounded-3xl border border-mint-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-mint-500 text-white font-extrabold text-xs px-3 py-1 rounded-full">東京エリアから</span>
+                            <span class="text-xs font-bold text-mint-600">新幹線 約100分</span>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-800">のぞみでサクッと弾丸旅！</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">東京駅から東海道新幹線でわずか1時間40分。朝一で出かければ午前中からモーニングを満喫できます！</p>
+                    </div>
+                    <div class="bg-mint-50 p-3 rounded-xl text-xs font-bold text-mint-800 border border-mint-100">
+                        💡 高速バスなら片道2,500円～とおトク！
+                    </div>
+                </div>
+
+                <!-- Osaka / Kansai Route -->
+                <div class="bg-white p-6 rounded-3xl border border-mint-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-teal-600 text-white font-extrabold text-xs px-3 py-1 rounded-full">関西（大阪・京都）から</span>
+                            <span class="text-xs font-bold text-teal-600">近鉄アーバン 約120分</span>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-800">近鉄特急ひのとりで快適移動</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">難波・京都から新幹線または「近鉄特急ひのとり」でゆったりアクセス。日帰り旅行にもぴったりな距離感。</p>
+                    </div>
+                    <div class="bg-mint-50 p-3 rounded-xl text-xs font-bold text-mint-800 border border-mint-100">
+                        💡 新幹線なら新大阪からたった約50分！
+                    </div>
+                </div>
+
+                <!-- Hokuriku / Kyushu / Northeast Route -->
+                <div class="bg-white p-6 rounded-3xl border border-mint-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-coral-500 text-white font-extrabold text-xs px-3 py-1 rounded-full">全国・遠方から</span>
+                            <span class="text-xs font-bold text-coral-600">飛行機 / 夜行バス</span>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-800">セントレア（中部国際空港）利用</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">セントレアから名鉄ミュースカイで名駅まで約28分！飛行機＆格安LCCも充実で地方からの旅にも最適。</p>
+                    </div>
+                    <div class="bg-mint-50 p-3 rounded-xl text-xs font-bold text-mint-800 border border-mint-100">
+                        💡 名駅から観光地は地下鉄1本でラクラク！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="spot-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all border border-mint-100 flex flex-col max-h-[90vh]">
+            <!-- Modal Image Header -->
+            <div id="modal-image-area" class="h-52 bg-mint-100 relative overflow-hidden">
+                <img id="modal-img" src="" alt="Spot detail" class="w-full h-full object-cover">
+                <button onclick="closeModal()" class="absolute top-3 right-3 bg-white/80 hover:bg-white text-slate-700 rounded-full w-9 h-9 flex items-center justify-center shadow-md font-bold transition-all">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-1">
+                <div class="flex items-center justify-between">
+                    <span id="modal-category" class="bg-mint-100 text-mint-800 font-extrabold text-xs px-3 py-1 rounded-full"></span>
+                    <span id="modal-rating" class="text-amber-500 font-extrabold text-xs"></span>
+                </div>
+                <h3 id="modal-title" class="text-2xl font-black text-slate-800"></h3>
+                <p id="modal-desc" class="text-sm text-slate-600 leading-relaxed font-medium"></p>
+                
+                <div class="bg-mint-50/80 p-4 rounded-2xl border border-mint-200/80 space-y-2 text-xs">
+                    <p class="font-extrabold text-mint-900"><i class="fa-solid fa-location-dot mr-1 text-mint-600"></i> Access / Info</p>
+                    <p id="modal-access" class="text-slate-700 font-medium leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end">
+                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-extrabold px-6 py-2.5 rounded-xl text-sm transition-all">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex justify-center items-center gap-2">
+                <div class="w-9 h-9 rounded-2xl mint-gradient flex items-center justify-center text-white font-black text-lg">
+                    ✨
+                </div>
+                <span class="text-xl font-black text-mint-300">名古屋ガールズ＆ユースガイド</span>
+            </div>
+            
+            <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+                地方から名古屋へ遊びに来る若いみんなのためのフォトジェニック＆グルメガイドです。楽しい名古屋旅になりますように♡
+            </p>
+
+            <div class="pt-4 border-t border-slate-800 text-xs text-slate-500">
+                &copy; 2026 Nagoya Youth Trip Guide. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // High quality photo data for young visitors
+        const spotsData = [
+            {
+                id: 'noritake-tsutaya',
+                title: 'TSUTAYA BOOKSTORE 名古屋則武新町',
+                category: 'photo',
+                categoryName: '📸 SNS映え',
+                img: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.9',
+                shortDesc: '天井まで届く巨大本棚と鏡張り演出が幻想的！SNSで一番話題の巨大ブックカフェ。',
+                fullDesc: 'イオンモールNagoya Noritake Garden内にあるフォトジェニックなTSUTAYA BOOKSTORE。階段横の天井まで届く特大ブックシェルフと鏡貼りの演出は、まるで映画の世界に入り込んだような写真が撮れる人気スポットです。併設カフェのドリンク片手にゆったり本を選べます。',
+                access: 'JR「名古屋」駅桜通口より徒歩12分 / 地下鉄東山線「亀島」駅より徒歩6分'
+            },
+            {
+                id: 'oasis-hisaya',
+                title: 'オアシス21 & RAYARD Hisaya-odori Park',
+                category: 'photo',
+                categoryName: '📸 SNS映え',
+                img: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.8',
+                shortDesc: '「水の宇宙船」空中散歩とオシャレな芝生パーク！ライトアップされたミライタワーが綺麗。',
+                fullDesc: 'ガラス張りの大屋根に水が流れる「水の宇宙船」オアシス21。夜は色鮮やかにライトアップされ絶景の夜景スポットに！隣接するRAYARD Hisaya-odori Parkには、話題のオシャレなカフェやショップ、広々とした芝生が広がり、ピクニック気分で楽しめます。',
+                access: '地下鉄東山線・名城線「栄」駅直結'
+            },
+            {
+                id: 'ghibli-park',
+                title: 'ジブリパーク（愛・地球博記念公園）',
+                category: 'anime',
+                categoryName: '🌿 ジブリ＆世界観',
+                img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.9',
+                shortDesc: 'スタジオジブリ作品の世界を自分自身の足で表現・散策できる話題のスポット！',
+                fullDesc: '愛知・長久手にあるジブリ作品の世界観を体験できる公園。「ジブリの大倉庫」「青春の丘」「どんどん森」「もののけの里」「魔女の谷」などジブリ作品の世界が広がり、名場面に入り込んだような写真を撮影できます！名駅・栄からの直行バスも便利。',
+                access: 'リニモ（東部丘陵線）「愛・地球博記念公園」駅すぐ / 名鉄バス「ジブリパーク」直行便あり'
+            },
+            {
+                id: 'osu-street',
+                title: '大須商店街 & 古着・スウィーツ食べ歩き',
+                category: 'culture',
+                categoryName: '🛍️ 大須・古着・グルメ',
+                img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.9',
+                shortDesc: 'クロッフルやいちご飴、10円パンから個性的古着屋まで！ごった煮のサブカル天国。',
+                fullDesc: '1200以上のお店がひしめく超元気な商店街！韓国スイーツや台湾唐揚げ、レトロなお団子などの食べ歩きグルメが大集合。ヴィンテージ古着屋さんやコンセプトカフェ、雑貨屋さんも盛りだくさんで1日中楽しめます。',
+                access: '地下鉄鶴舞線「大須観音」駅または地下鉄名城線「上前津」駅すぐ'
+            },
+            {
+                id: 'retro-cafe',
+                title: 'ぴよりんショップ＆レトロ純喫茶巡り',
+                category: 'photo',
+                categoryName: '🍮 カフェ・スイーツ',
+                img: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.8',
+                shortDesc: 'ぷるぷる可愛いひよこケーキ「ぴよりん」＆カラフルなクリームソーダ、小倉トースト！',
+                fullDesc: '名古屋に来たら絶対外せないのが喫茶文化！名駅で大人気の「ぴよりん」は崩さず持ち帰る「ぴよりんチャレンジ」も話題。昭和レトロな純喫茶でいただく固めプリンと鮮やかなクリームソーダは最高の映え体験です。',
+                access: 'JR名古屋駅構内（ぴよりんSTATION）/ 伏見・栄エリアの老舗喫茶店多数'
+            },
+            {
+                id: 'port-aquarium',
+                title: '名古屋港水族館（シャチ＆クラゲ）',
+                category: 'photo',
+                categoryName: '📸 SNS映え',
+                img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.7',
+                shortDesc: '日本で数少ないシャチに会える！幻想的なクラゲギャラリーやダイナミックなイルカショー。',
+                fullDesc: '日本最大級のプールを誇る水族館。超巨大なシャチのダイナミックな泳ぎや、ライトアップされた幻想的な「くらげなごみリウム」は写真映え間違いなし！デートや友達同士の思い出作りにぴったりです。',
+                access: '地下鉄名港線「名古屋港」駅 3番出口より徒歩3分'
+            },
+            {
+                id: 'nagoya-castle',
+                title: '名古屋城＆金シャチ横丁',
+                category: 'history',
+                categoryName: '🏯 名古屋城・歴史',
+                img: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&auto=format&fit=crop&q=80',
+                rating: '★ 4.7',
+                shortDesc: '金しゃち輝く名城！併設の「金シャチ横丁」でなごやめし食べ歩きも最高。',
+                fullDesc: '金のしゃちほこで有名な名古屋のシンボル！城の麓にある「金シャチ横丁」には老舗のなごやめし店が集結しており、義直ゾーン・宗春ゾーンで食べ比べや和スイーツを楽しめます。',
+                access: '地下鉄名城線「名古屋城」駅 7番出口より徒歩5分'
+            }
+        ];
+
+        const gachaFoods = [
+            {
+                title: 'ぴよりん（ひよこ型スイーツ）',
+                badge: '🐥 超人気スイーツ',
+                img: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80',
+                desc: '愛知の地元食材を使ったぷるぷるフワフワのひよこ型ババロアケーキ！連日完売の人気者♡',
+                recommend: 'スポット：ぴよりんSTATION（JR名古屋駅）'
+            },
+            {
+                title: '小倉あんバターサンド＆クリームソーダ',
+                badge: '🍞 喫茶モーニング',
+                img: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop&q=80',
+                desc: 'サクサク香ばしいトーストにあんことじゅわっとバター！カラフルなクリームソーダと一緒にどうぞ。',
+                recommend: 'スポット：喫茶コンパル、ブチョーコーヒー、かこ花車本店'
+            },
+            {
+                title: '大須の台湾唐揚げ＆イチゴ飴',
+                badge: '🍡 大須食べ歩き',
+                img: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=800&auto=format&fit=crop&q=80',
+                desc: '顔より大きいビッグサイズのサクサク台湾スパイス唐揚げ！甘いイチゴ飴との無限ループが最高。',
+                recommend: 'スポット：李さんの台湾名物屋台、大須商店街'
+            },
+            {
+                title: '矢場とんの味噌カツ',
+                badge: '🥩 がっつり名物',
+                img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80',
+                desc: 'サクサクのカツに甘辛コクうま豆味噌ダレをたっぷりと！可愛いブタさんキャラクター「ぶーちゃん」も映える！',
+                recommend: 'スポット：矢場とん 矢場町本店、名駅店'
+            },
+            {
+                title: 'あつあつ ひつまぶし',
+                badge: '🍱 ごほうびグルメ',
+                img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=800&auto=format&fit=crop&q=80',
+                desc: 'そのまま、薬味をのせて、最後はお出しでお茶漬け！一皿で3回美味しい名古屋グルメの王様。',
+                recommend: 'スポット：あつた蓬莱軒、うな富士'
+            }
+        ];
+
+        const quizQuestions = [
+            {
+                q: '今回の旅で一番楽しみたいことは？',
+                options: [
+                    { text: '📸 InstagramやTikTokでおしゃれな写真・動画を撮りたい！', score: 'photo' },
+                    { text: '🍰 カフェ巡り＆カワイイスイーツを食べ尽くしたい！', score: 'sweets' },
+                    { text: '🛍️ 大須で古着買ったり食べ歩きでワイワイしたい！', score: 'walk' }
+                ]
+            },
+            {
+                q: 'どんな雰囲気の場所が好き？',
+                options: [
+                    { text: '✨ 洗練された最新スポットや幻想的な夜景', score: 'modern' },
+                    { text: '🍮 レトロでエモい喫茶店やほっこり空間', score: 'retro' },
+                    { text: '🎉 賑やかで活気のあるカルチャー街', score: 'street' }
+                ]
+            },
+            {
+                q: '旅のパートナー・スタイルは？',
+                options: [
+                    { text: '👭 大切な友達と映えスポット巡り', score: 'friends' },
+                    { text: '🏃 ひとり旅で気ままにカフェ・本屋めぐり', score: 'solo' },
+                    { text: '💖 デートでロマンチックな夜景＆水族館', score: 'date' }
+                ]
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizAnswers = [];
+
+        window.onload = function() {
+            renderSpotCards('all');
+            initQuiz();
+        };
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function renderSpotCards(filterCategory) {
+            const grid = document.getElementById('spots-grid');
+            grid.innerHTML = '';
+
+            const filtered = filterCategory === 'all' 
+                ? spotsData 
+                : spotsData.filter(s => s.category === filterCategory);
+
+            filtered.forEach(spot => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-3xl overflow-hidden shadow-md border border-mint-100 flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-mint-300 transition-all group';
+                card.onclick = () => openModal(spot.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 sm:h-52 overflow-hidden img-hover-zoom">
+                            <img src="${spot.img}" alt="${spot.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur text-mint-800 font-extrabold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                                ${spot.categoryName}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2.5">
+                            <div class="flex items-center gap-1.5 text-amber-500 font-extrabold text-xs">
+                                <span>${spot.rating}</span>
+                                <span class="text-slate-400 font-normal">| 大注目</span>
+                            </div>
+                            <h3 class="text-lg font-black text-slate-800 group-hover:text-mint-600 transition-colors leading-snug">${spot.title}</h3>
+                            <p class="text-xs text-slate-600 font-medium leading-relaxed">${spot.shortDesc}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 mt-2 flex items-center justify-between text-xs font-extrabold text-mint-600">
+                        <span>詳しくチェック</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterSpots(category) {
+            document.querySelectorAll('.spot-tab-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.add('bg-mint-500', 'text-white');
+                    btn.classList.remove('bg-slate-100', 'text-slate-600');
+                } else {
+                    btn.classList.remove('bg-mint-500', 'text-white');
+                    btn.classList.add('bg-slate-100', 'text-slate-600');
+                }
+            });
+            renderSpotCards(category);
+        }
+
+        function openModal(spotId) {
+            const spot = spotsData.find(s => s.id === spotId);
+            if (!spot) return;
+
+            document.getElementById('modal-img').src = spot.img;
+            document.getElementById('modal-category').innerText = spot.categoryName;
+            document.getElementById('modal-rating').innerText = spot.rating;
+            document.getElementById('modal-title').innerText = spot.title;
+            document.getElementById('modal-desc').innerText = spot.fullDesc;
+            document.getElementById('modal-access').innerText = spot.access;
+
+            const modal = document.getElementById('spot-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('spot-modal').classList.add('hidden');
+        }
+
+        function spinFoodGacha() {
+            playBeepSound();
+            const placeholder = document.getElementById('gacha-placeholder');
+            const content = document.getElementById('gacha-content');
+            const btn = document.getElementById('spin-btn');
+
+            btn.disabled = true;
+            btn.classList.add('opacity-70');
+
+            placeholder.classList.add('hidden');
+            content.classList.remove('hidden');
+
+            let counter = 0;
+            const spinInterval = setInterval(() => {
+                const randomItem = gachaFoods[Math.floor(Math.random() * gachaFoods.length)];
+                document.getElementById('gacha-img').src = randomItem.img;
+                document.getElementById('gacha-badge').innerText = randomItem.badge;
+                document.getElementById('gacha-title').innerText = randomItem.title;
+                document.getElementById('gacha-desc').innerText = '今日のごはんを選定中...♡';
+                document.getElementById('gacha-recommend').innerText = '？？？';
+                counter++;
+
+                if (counter > 10) {
+                    clearInterval(spinInterval);
+                    const finalItem = gachaFoods[Math.floor(Math.random() * gachaFoods.length)];
+                    document.getElementById('gacha-img').src = finalItem.img;
+                    document.getElementById('gacha-badge').innerText = finalItem.badge;
+                    document.getElementById('gacha-title').innerText = finalItem.title;
+                    document.getElementById('gacha-desc').innerText = finalItem.desc;
+                    document.getElementById('gacha-recommend').innerText = finalItem.recommend;
+                    
+                    playWinSound();
+
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70');
+                }
+            }, 120);
+        }
+
+        function initQuiz() {
+            currentQuizIndex = 0;
+            quizAnswers = [];
+            showQuizQuestion();
+        }
+
+        function showQuizQuestion() {
+            const qData = quizQuestions[currentQuizIndex];
+            document.getElementById('current-q-num').innerText = currentQuizIndex + 1;
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuizIndex + 1) / 3) * 100}%`;
+            document.getElementById('quiz-question-text').innerText = qData.q;
+
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+
+            qData.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left bg-mint-50/60 hover:bg-mint-100 border border-mint-200 p-4 rounded-2xl font-bold text-slate-800 transition-all flex items-center justify-between text-xs sm:text-sm group';
+                btn.onclick = () => selectQuizAnswer(opt.score);
+                btn.innerHTML = `<span>${opt.text}</span> <i class="fa-solid fa-chevron-right text-mint-500 text-xs group-hover:translate-x-1 transition-transform"></i>`;
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function selectQuizAnswer(score) {
+            playBeepSound();
+            quizAnswers.push(score);
+            currentQuizIndex++;
+
+            if (currentQuizIndex < quizQuestions.length) {
+                showQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+
+            const firstChoice = quizAnswers[0];
+            let title = '📸 SNS映えフォトマスター女子';
+            let desc = 'ノリタケの巨大本棚やオアシス21の夜景、ぴよりんなど写真に残したくなる可愛さあふれるスポット巡りがぴったり！';
+            let spot = 'TSUTAYAノリタケ本棚 ＆ オアシス21夜景さんぽ';
+
+            if (firstChoice === 'sweets') {
+                title = '🍮 昭和レトロ＆カフェスイーツ派';
+                desc = 'カラフルなクリームソーダや小倉トースト、限定ぴよりんを巡る至福の喫茶・スイーツ旅がおすすめ！';
+                spot = 'ぴよりんSTATION ＆ 伏見・栄のレトロ純喫茶巡り';
+            } else if (firstChoice === 'walk') {
+                title = '🛍️ 大須食べ歩き＆古着カルチャー派';
+                desc = '大須商店街で韓国スイーツや台湾唐揚げを食べ歩きしながら、掘り出しものの古着や雑貨を探す最高に楽しいコース！';
+                spot = '大須商店街 食べ歩き＆古着屋さんハシゴ';
+            }
+
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-desc').innerText = desc;
+            document.getElementById('result-spot-name').innerText = spot;
+            
+            playWinSound();
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            initQuiz();
+        }
+
+        function playBeepSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = 523.25;
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.1);
+            } catch (e) {}
+        }
+
+        function playWinSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.08, ctx.currentTime + idx * 0.1);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.1 + 0.25);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + idx * 0.1);
+                    osc.stop(ctx.currentTime + idx * 0.1 + 0.25);
+                });
+            } catch (e) {}
+        }
+    </script>
+</body>
+</html>
